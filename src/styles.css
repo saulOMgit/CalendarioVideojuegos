@@ -1,0 +1,21 @@
+.full-height-image {
+    /* height: 100%;
+  width: 100%;
+  object-fit: contain; */
+  }
+
+/* Estilos para el modo oscuro */
+body {
+background-color: #343a40; /* Color de fondo oscuro */
+color: #ffffff; /* Color de texto blanco */
+}
+
+/* Estilos específicos para componentes en modo oscuro */
+.dark-mode .card {
+background-color: #495057; /* Color de fondo oscuro para tarjetas */
+color: #ffffff; /* Color de texto blanco para tarjetas */
+}
+
+i{
+  color: white;
+}
