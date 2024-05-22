@@ -1,16 +1,12 @@
-import { collection, deleteDoc, doc, setDoc } from 'firebase/firestore/lite';
-import { FirebaseDB } from '../../firebase/config';
-import { addNewEmptyNote, setActiveNote } from '..';
-import { deleteNoteById, savingNewNote, setNotes, setPhotosToActiveNote, setSaving, updateNote } from './journalSlice';
-import { fileUpload, loadNotes } from '../../helpers';
-import { loadGames } from '../../helpers/loadGames';
 
+import {loadGames} from '../../helpers/loadGames';
+import {setJuegos} from "./calendarSlice";
 
-export const startLoadingNotes = () => {
+export const startLoadingGames = () => {
     return async( dispatch, getState ) => {
         
-
-        await loadGames();
-        dispatch( setNotes( notes ) );
+        console.log('llego');
+        const juegos=await loadGames();
+        dispatch(setJuegos());
     }
 }
