@@ -33,7 +33,7 @@ export const Game = ({  }) => {
             <div className="card mt-3" key={juego.id}>
               <div className="row g-0">
                 <div className="col-md-4">
-                  <img src={juego.background_image} alt={juego.name} className="img-fluid rounded-start full-height-image" />
+                  <img src={`${juego.imagen}.jpg`} alt={juego.name} className="img-fluid rounded-start full-height-image" />
                 </div>
                 <div className="col-md-8">
                   <div className="card-body">
