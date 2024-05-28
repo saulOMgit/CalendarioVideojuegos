@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { FirebaseDb } from "./firebase/config";
 import { collection, getDocs, query, orderBy, where } from "firebase/firestore";
+import { format, setDefaultOptions } from "date-fns";
+import es from 'date-fns/locale/es';
 
 export const Game = ({ startDate, endDate }) => {
   const [juegos, setJuegos] = useState([]);
-
+  setDefaultOptions({ locale: es })
   useEffect(() => {
     const fetchGames = async () => {
       console.log("Fetching games..."); // Log inicial
@@ -38,13 +40,15 @@ export const Game = ({ startDate, endDate }) => {
       {juegos.length > 0 ? (
         <div className="App dark-mode">
           {juegos.map((juego, index) => {
-            const fechaActual = juego.fecha.toDate().toLocaleDateString();
-            const fechaAnterior = index > 0 ? juegos[index - 1].fecha.toDate().toLocaleDateString() : null;
+            // const fechaActual = juego.fecha.toDate().toLocaleDateString();
+            // const fechaAnterior = index > 0 ? juegos[index - 1].fecha.toDate().toLocaleDateString() : null;
+            const fechaActual = format(juego.fecha.toDate(),"d 'de' MMMM yyyy");
+            const fechaAnterior = index > 0 ? format(juegos[index - 1].fecha.toDate(),"d 'de' MMMM yyyy") : null;
             const mostrarFecha = fechaActual !== fechaAnterior;
 
             return (
               <React.Fragment key={juego.id}>
-                {mostrarFecha && <h1>{fechaActual}</h1>}
+                {mostrarFecha && <h2>{fechaActual}</h2>}
                 <div className="card mt-3">
                   <div className="row g-0">
                     <div className="col-md-4">
