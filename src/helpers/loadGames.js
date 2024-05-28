@@ -2,7 +2,7 @@ import { collection, getDocs } from "firebase/firestore"
 import { FirebaseDb } from "../firebase/config"
 
 export const loadGames = async() => {
-    const collectionRef = collection(FirebaseDb,`juegos/juegos/juego`);
+    const collectionRef = collection(FirebaseDb,`juegos`);
     const docs = await getDocs(collectionRef);
     
     const juegos=[]
