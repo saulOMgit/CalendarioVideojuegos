@@ -1,24 +1,29 @@
 import React, { useEffect, useState } from "react";
 import { FirebaseDb } from "./firebase/config";
 import { collection, getDocs, query, orderBy, where } from "firebase/firestore";
-import { format, setDefaultOptions } from "date-fns";
+import { format, setDefaultOptions, startOfDay, endOfDay } from "date-fns";
 import es from 'date-fns/locale/es';
 
 export const Game = ({ startDate, endDate }) => {
   const [juegos, setJuegos] = useState([]);
-  setDefaultOptions({ locale: es })
+  setDefaultOptions({ locale: es });
+
   useEffect(() => {
     const fetchGames = async () => {
       console.log("Fetching games..."); // Log inicial
       try {
+        // Convertir startDate y endDate a objetos Date y ajustar la hora
+        const start = startOfDay(new Date(startDate));
+        const end = endOfDay(new Date(endDate));
+
         // Obtener una referencia a la colección principal "juegos"
         const mainCollectionRef = collection(FirebaseDb, "juegos");
 
         // Crear una consulta para filtrar los documentos por fecha
         const q = query(
           mainCollectionRef,
-          where("fecha", ">=", new Date(startDate)),
-          where("fecha", "<=", new Date(endDate)),
+          where("fecha", ">=", start),
+          where("fecha", "<=", end),
           orderBy("fecha")
         );
 
@@ -40,8 +45,6 @@ export const Game = ({ startDate, endDate }) => {
       {juegos.length > 0 ? (
         <div className="App dark-mode">
           {juegos.map((juego, index) => {
-            // const fechaActual = juego.fecha.toDate().toLocaleDateString();
-            // const fechaAnterior = index > 0 ? juegos[index - 1].fecha.toDate().toLocaleDateString() : null;
             const fechaActual = format(juego.fecha.toDate(),"d 'de' MMMM yyyy");
             const fechaAnterior = index > 0 ? format(juegos[index - 1].fecha.toDate(),"d 'de' MMMM yyyy") : null;
             const mostrarFecha = fechaActual !== fechaAnterior;
@@ -63,7 +66,6 @@ export const Game = ({ startDate, endDate }) => {
                             {Array.isArray(juego.plataformas) && juego.plataformas.includes("playstation") && <i className="bi bi-playstation"></i>}
                             {Array.isArray(juego.plataformas) && juego.plataformas.includes("switch") && <i className="bi bi-nintendo-switch"></i>}
                             {Array.isArray(juego.plataformas) && juego.plataformas.includes("xbox") && <i className="bi bi-xbox"></i>}
-
                           </small>
                         </p>
                         <p className="card-text">{juego.descripcion}</p>
