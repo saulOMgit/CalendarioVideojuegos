@@ -10,7 +10,6 @@ export const Game = ({ startDate, endDate }) => {
 
   useEffect(() => {
     const fetchGames = async () => {
-      console.log("Fetching games..."); // Log inicial
       try {
         // Convertir startDate y endDate a objetos Date y ajustar la hora
         const start = startOfDay(new Date(startDate));
@@ -30,7 +29,7 @@ export const Game = ({ startDate, endDate }) => {
         // Obtener los documentos de la colección principal
         const querySnapshot = await getDocs(q);
         const gamesList = querySnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
-        console.log("Games fetched: ", gamesList); // Log después de obtener los documentos
+        // console.log("Games fetched: ", gamesList); // Log después de obtener los documentos
         setJuegos(gamesList);
       } catch (error) {
         console.error("Error fetching games: ", error);
@@ -78,7 +77,7 @@ export const Game = ({ startDate, endDate }) => {
           })}
         </div>
       ) : (
-        <p>Cargando...</p>
+        <p>No se han encontrado juegos en esta fecha...</p>
       )}
     </>
   );

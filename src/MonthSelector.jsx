@@ -1,15 +1,5 @@
-import {useDispatch} from 'react-redux';
-import { startLoadingGames } from './store/calendar/thunks';
-export const MonthSelector = ({startDate,endDate,incrementMonth, handleDateChange,setStartDate,setEndDate}) => {
-
+export const MonthSelector = ({startDate,endDate,incrementMonth, decrementMonth,setStartDate,setEndDate}) => {
   
-
-  const dispatch = useDispatch();
-
-  const onClickNewNote = () => {
-    console.log('hola');
-    dispatch(startLoadingGames());
-  }
   return (
     <div className="btn-toolbar" role="toolbar">
         <div className="btn-group me-2" role="group">
@@ -19,9 +9,9 @@ export const MonthSelector = ({startDate,endDate,incrementMonth, handleDateChang
           <input type="date" value={endDate} onChange={e => setEndDate(e.target.value)} />
         </div>
         <div className="btn-group " role="group">
-          <button className="btn btn-dark" onClick={onClickNewNote}>Cargar</button>          
+          <button className="btn btn-dark" onClick={decrementMonth}>⏪</button>          
 
-          <button className="btn btn-dark" onClick={incrementMonth}>Incrementar mes</button>          
+          <button className="btn btn-dark" onClick={incrementMonth}>⏩</button>          
         </div>
     </div>
   )
