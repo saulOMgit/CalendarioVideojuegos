@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { getDates } from './helpers/getDates';
 import { Game } from './Game';
 import { MonthSelector } from './MonthSelector';
+import { Footer } from './Footer';
 
 export const Calendario = () => {
   const [firstDay, lastDay] = getDates();
@@ -50,6 +51,7 @@ const decrementMonth = () => {
         setEndDate={setEndDate}
       />
       <Game startDate={startDate} endDate={endDate} />
+      <Footer/>
     </div>
   );
 };
