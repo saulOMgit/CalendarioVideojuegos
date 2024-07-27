@@ -9,9 +9,9 @@ export const MonthSelector = ({startDate,endDate,incrementMonth, decrementMonth,
           <input type="date" value={endDate} onChange={e => setEndDate(e.target.value)} />
         </div>
         <div className="btn-group " role="group">
-          <button className="btn btn-dark" onClick={decrementMonth}>⏪</button>          
+          <button className="btn btn-dark ms-2" onClick={decrementMonth}>⏪</button>          
 
-          <button className="btn btn-dark" onClick={incrementMonth}>⏩</button>          
+          <button className="btn btn-dark ms-2" onClick={incrementMonth}>⏩</button>          
         </div>
     </div>
   )
