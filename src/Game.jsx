@@ -44,7 +44,7 @@ export const Game = ({ startDate, endDate }) => {
       {juegos.length > 0 ? (
         <div className="App dark-mode">
           {juegos.map((juego, index) => {
-            const fechaActual = format(juego.fecha.toDate(),"d 'de' MMMM yyyy");
+            const fechaActual = format(juego.fecha.toDate(),"d 'de' MMMM");
             const fechaAnterior = index > 0 ? format(juegos[index - 1].fecha.toDate(),"d 'de' MMMM yyyy") : null;
             const mostrarFecha = fechaActual !== fechaAnterior;
 

@@ -18,5 +18,7 @@ color: #ffffff; /* Color de texto blanco para tarjetas */
 
 i{
   color: white;
-  padding-right: 4px;
+  padding-right: 10px;
+  font-size: 20px;
 }
+
