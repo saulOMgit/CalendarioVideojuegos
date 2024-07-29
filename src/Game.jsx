@@ -44,14 +44,14 @@ export const Game = ({ startDate, endDate }) => {
       {juegos.length > 0 ? (
         <div className="App dark-mode">
           {juegos.map((juego, index) => {
-            const fechaActual = format(juego.fecha.toDate(),"d 'de' MMMM");
+            const fechaActual = format(juego.fecha.toDate(),"d 'de' MMMM yyyy");
             const fechaAnterior = index > 0 ? format(juegos[index - 1].fecha.toDate(),"d 'de' MMMM yyyy") : null;
             const mostrarFecha = fechaActual !== fechaAnterior;
 
             return (
               <React.Fragment key={juego.id}>
                 {mostrarFecha && <h2>{fechaActual}</h2>}
-                <div className="card mt-3 mb-2">
+                <div className="card mt-3">
                   <div className="row g-0">
                     <div className="col-md-4">
                       <img src={`${juego.imagen}.jpg`} alt={juego.name} className="img-fluid rounded-start full-height-image" />
