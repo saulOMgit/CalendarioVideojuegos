@@ -4,7 +4,7 @@ export const MonthSelector = ({ startDate, endDate, incrementMonth, decrementMon
   const [showDateSelectors, setShowDateSelectors] = useState(false);
 
   return (
-    <div className="btn-toolbar" role="toolbar">
+    <div className="btn-toolbar mb-3" role="toolbar">
       <div className="btn-group me-2" role="group">
         <button 
           className="btn btn-dark ms-2" 

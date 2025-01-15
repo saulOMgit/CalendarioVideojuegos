@@ -48,8 +48,8 @@ export const Calendario = () => {
 
 
   return (
-    <div className='container dark-mode'>
-      <h1>Lanzamiento Juegos - {mesFormateado} {anyoFormateado}</h1>
+    <div className='container dark-mode '>
+      <h1 className='mb-3'>Lanzamiento Juegos - {mesFormateado} {anyoFormateado}</h1>
       <MonthSelector
         startDate={startDate}
         endDate={endDate}

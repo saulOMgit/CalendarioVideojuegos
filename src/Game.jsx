@@ -50,8 +50,8 @@ export const Game = ({ startDate, endDate }) => {
 
             return (
               <React.Fragment key={juego.id}>
-                {mostrarFecha && <h2>{fechaActual}</h2>}
-                <div className="card mt-3">
+                {mostrarFecha && <h2 className="animate__animated animate__bounceInUp ">{fechaActual}</h2>}
+                <div className="card mt-3 animate__animated animate__bounceInUp mb-3">
                   <div className="row g-0">
                     <div className="col-md-4">
                       <img src={`${juego.imagen}.jpg`} alt={juego.titulo} className="img-fluid rounded-start full-height-image" />
